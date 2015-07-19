@@ -47,9 +47,13 @@ pattern[pattern$steps==max(pattern$steps),"interval"]
 ```{r echo = TRUE}
 nrow(data[is.na(data$steps),])
 ```
-### Strategy for filling in all of the missing values in the dataset - set to mean for that day
+### Strategy for filling in all of the missing values in the dataset - set to mean for all day
 ```{r echo = TRUE}
-data[is.na(data$steps),]
+data_noNA<-data
+data_noNA[is.na(data_noNA$steps),"steps"]<-mean(d$steps)
+mean(d$steps)
+median(d$steps)
+
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
